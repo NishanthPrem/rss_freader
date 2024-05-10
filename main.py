@@ -17,7 +17,10 @@ def main():
             raise ValueError()   # Raise error if invalid URL
             
         feed = feedparser.parse(user_input) 
-        print(feed.feed.title)
+        for entry in feed.entries:
+            print('Title:\n', entry.title)  
+            print('Link:\n', entry.link)
+            print('Description:\n', entry.description)
         
     except Exception as e:
         print("An error occurred Invalid URL", str(e))
